@@ -12,6 +12,38 @@
   - `RubixBakers/src/main/resources/prices.dat`
   - `RubixBakers/src/main/resources/order.txt`
 
+With default inputs, result looks like this:
+
+```sh
+Prices of each of the packs
+CF~3       => $5.95
+CF~5       => $9.95
+CF~9       => $16.99
+MB11~2     => $9.95
+MB11~5     => $16.95
+MB11~8     => $24.95
+VS5~3      => $6.99
+VS5~5      => $8.99
+--------------------------------------------------------------------------------
+Order: CF, Quantity: 13 Pack Sizes: [9 5 3 ]
+Pack type: -      CF~5, Required packs: 2     X  9.95, Subtotal:    19.90
+Pack type: -      CF~3, Required packs: 1     X  5.95, Subtotal:     5.95
+Sub-total:                                                          25.85
+--------------------------------------------------------------------------------
+Order: MB11, Quantity: 14 Pack Sizes: [8 5 2 ]
+Pack type: -    MB11~8, Required packs: 1     X 24.95, Subtotal:    24.95
+Pack type: -    MB11~2, Required packs: 3     X  9.95, Subtotal:    29.85
+Sub-total:                                                          54.80
+--------------------------------------------------------------------------------
+Order: VS5, Quantity: 10 Pack Sizes: [5 3 ]
+Pack type: -     VS5~5, Required packs: 2     X  8.99, Subtotal:    17.98
+Sub-total:                                                          17.98
+--------------------------------------------------------------------------------
+Bill to be paid:                                                    98.63
+```
+
+
+
 ### Test cases
 
 | S.No. | Test Case                                                    | Expected Result                                              |
