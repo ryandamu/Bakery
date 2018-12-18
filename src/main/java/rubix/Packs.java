@@ -6,12 +6,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Packs {
-
-  // Constants
+  // These actually represent columns in the matrix.
   private static final int PACKS_REQUIRED = 0;
   private static final int PACK_SIZES = 1;
   private static final int PACKS = 2;
   private static final int REMAINDER = 3;
+
+  // The arrays are not defined as we don't know sizes yet.
   private static char[] status = null;
   private static int[][] matrix = null;
 
@@ -22,6 +23,12 @@ public class Packs {
     }
   }
 
+  /**
+   * Checks if the `status` array has all 'E'. That means, we have been able to identify best
+   * possible combination of packs.
+   * @param status ... Array that holds status of each pack [For internal purpose only]
+   * @return ... returns a Boolean value.
+   */
   private static boolean checkFlag(char[] status) {
     boolean result = true;
 
@@ -50,8 +57,16 @@ public class Packs {
     System.out.println();*/
   }
 
+  /**
+   * This method calculates No. of Packs and remainder for each of the packagings. It updates
+   * the matrix.
+   */
   private static void performCals() {
     for (int row = 0; row < matrix.length; row++) {
+
+      // Update No. of Packs only the flag for the row is NOT 'I' [I for Ignore]. The flag tells the
+      // algorithm to use a specific "number" instead of "actual divisor". For instance, "15" can be
+      // divided by "2 packs" of "7 buns". but, we want to keep only "1 one" pack instead of "2".
       if (status[row] != 'I') {
         matrix[row][PACKS] = matrix[row][PACKS_REQUIRED] / matrix[row][PACK_SIZES];
       }
