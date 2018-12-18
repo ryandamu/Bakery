@@ -33,9 +33,31 @@ But in this case, the `packs_required` of `5` is already `0`.  So, it goes one l
 | 13             | 5          | 2              | 3         |
 | 3              | 3          | 1              | 0         |
 
-Since the remainder is zero, the algorithm concludes that this is the best possible combination. 
+Since the remainder is zero, the algorithm concludes that this is the best possible combination.  This is a simple example where `packs_required` are very less and the algorithm gets a remainder of `zero` in the very first iteration. 
 
+But, there can be cases where there are multiple packages [say 9, 8, 7, 6, 5, 4, 3, 2, 1], and a customer's requirement can be met by decreasing the `packs_required` value from the `Optimal value` by `1` repeatedly.  **One of the complexities is that, if packs_required is reduced by 1 for any one packaging, all lower level packs should be counted repeatedly to look for optimal combination**. This algorithm does that. 
 
+##### When does it stop ?
+
+For any given requirement, the algorithm decides that it cannot meet in one of the following conditions:
+
+- Packages available for a given bun are more than what customer wants.  
+
+  - E.g., Croissant is available in `3, 5, 9` packages, but customer wants only `2 croissants`
+
+- A requirement cannot be met using any of the package combinations. In that case, the matrix looks like this - All the `packs_required` are zeros in all rows except the last row, and still `remainder` is not zero. 
+
+  | customer_count | pack_sizes | packs_required | Remainder |
+  | -------------- | ---------- | -------------- | --------- |
+  | 7              | 9          | 0              | 7         |
+  | 7              | 5          | 1              | 2         |
+  | 2              | 3          | 0              | 2         |
+
+  | customer_count | pack_sizes | packs_required | Remainder |
+  | -------------- | ---------- | -------------- | --------- |
+  | 7              | 9          | 0              | 7         |
+  | 7              | 5          | 0              | 7         |
+  | 7              | 3          | 2              | 1         |
 
 ### Steps to Compile and test
 
